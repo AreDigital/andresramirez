@@ -1461,7 +1461,7 @@ function setGeo(id,geo){
     layerAngles[id].x = saved ? saved.angleX : 0;
     layerAngles[id].y = saved ? saved.angleY : 0;
   }
-  buildNodes(L);renderUI();if(typeof mobRender==='function')mobRender();
+  buildNodes(L);renderUI();setTimeout(()=>{if(typeof mobRender==='function')mobRender();},0);
 }
 const BAND_DEFAULTS={
   sub:  {amp:1.5},
@@ -1472,7 +1472,7 @@ const BAND_DEFAULTS={
 
 function setBand(id,b){
   const L=getL(id);if(!L)return;
-  if(L.band===b){L.band=null;renderUI();if(typeof mobRender==='function')mobRender();return;}
+  if(L.band===b){L.band=null;renderUI();setTimeout(()=>{if(typeof mobRender==='function')mobRender();},0);return;}
   if(L.band){
     if(!L.bandStates) L.bandStates={};
     L.bandStates[L.band]={amp:L.amp};
@@ -1481,7 +1481,7 @@ function setBand(id,b){
   if(!L.bandStates) L.bandStates={};
   const saved=L.bandStates[b];
   L.amp=saved?saved.amp:(BAND_DEFAULTS[b]||{amp:1}).amp;
-  renderUI();if(typeof mobRender==='function')mobRender();
+  renderUI();setTimeout(()=>{if(typeof mobRender==='function')mobRender();},0);
 }
 function toggleTent(id){const L=getL(id);if(L){L.tent=L.tent?0:1;renderUI();}}
 function toggleLayerZoom(id){const L=getL(id);if(L){L.zoom=L.zoom?0:1;renderUI();}}
@@ -1950,7 +1950,11 @@ function mobRender(){
         </div>
       </div>
       <div class="band-grid">
-        ${BANDS.map((b,i)=>`<button class="bb${L.band===b?' active':''}" onclick="setBand(${id},'${b}')" style="${L.band===b?'border-color:'+col+';color:'+col:''}">${BNAMES[i]}</button>`).join('')}
+        ${BANDS.map((b,i)=>{
+          const isActive = L.band===b;
+          const s = isActive ? `border-color:${col};color:${col};background:rgba(255,255,255,0.1)` : '';
+          return `<button class="bb${isActive?' active':''}" style="${s}" onclick="setBand(${id},'${b}')">${BNAMES[i]}</button>`;
+        }).join('')}
       </div>
       <div class="ctrl">
         <div class="crow"><label style="color:${col}">AMPLITUD</label><span class="val" id="${uid}_a">${L.amp.toFixed(1)}</span></div>
