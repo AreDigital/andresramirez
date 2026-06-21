@@ -285,15 +285,6 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-d2 { transition-delay: .12s; }
 
-
-    
-    #back-top.visible {
-      opacity: 1; pointer-events: auto;
-    }
-    @media (min-width: 769px) {
-      #back-top { display: none !important; }
-    }
-
     /* RESPONSIVE */
     @media (max-width: 900px) { .nav-links { display: none; } }
     @media (max-width: 768px) {
@@ -306,36 +297,6 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
-    }
-
-    @media (max-width: 768px) {
-      #btt {
-        position: fixed;
-        bottom: 24px;
-        right: 20px;
-        z-index: 9999;
-        width: 46px;
-        height: 46px;
-        background: #0b0f17;
-        border: 1px solid #22d3ee;
-        border-radius: 50%;
-        color: #22d3ee;
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity .3s;
-        pointer-events: none;
-      }
-      #btt.show {
-        opacity: 1;
-        pointer-events: auto;
-      }
-    }
-    @media (min-width: 769px) {
-      #btt { display: none; }
     }
   </style>
 </head>
@@ -881,13 +842,6 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   })();
-  </script>
-  <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
-  <script>
-    var b = document.getElementById('btt');
-    window.addEventListener('scroll', function() {
-      b.classList.toggle('show', window.scrollY > 300);
-    });
   </script>
 </body>
 </html>
