@@ -286,18 +286,7 @@
     .reveal-d2 { transition-delay: .12s; }
 
 
-    /* ── BACK TO TOP (mobile only) ── */
-    #back-top {
-      position: fixed; bottom: 28px; right: 24px; z-index: 9990;
-      width: 48px; height: 48px;
-      border: 1px solid rgba(34,211,238,.5); border-radius: 50%;
-      background: rgba(7,9,13,.95);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); cursor: pointer;
-      opacity: 0; pointer-events: none;
-      transition: opacity .4s, box-shadow .3s;
-      box-shadow: 0 0 20px rgba(34,211,238,.15);
-    }
+    
     #back-top.visible {
       opacity: 1; pointer-events: auto;
     }
@@ -318,6 +307,36 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    @media (max-width: 768px) {
+      #btt {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        z-index: 9999;
+        width: 46px;
+        height: 46px;
+        background: #0b0f17;
+        border: 1px solid #22d3ee;
+        border-radius: 50%;
+        color: #22d3ee;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity .3s;
+        pointer-events: none;
+      }
+      #btt.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    @media (min-width: 769px) {
+      #btt { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -325,13 +344,6 @@
   <div id="cursor-dot"></div>
   <div id="cursor-ring"></div>
   <canvas id="canvas"></canvas>
-
-  <!-- BACK TO TOP -->
-  <button id="back-top" aria-label="Volver arriba">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
 
   <!-- NAV -->
   <nav id="nav">
@@ -869,6 +881,13 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   })();
+  </script>
+  <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+  <script>
+    var b = document.getElementById('btt');
+    window.addEventListener('scroll', function() {
+      b.classList.toggle('show', window.scrollY > 300);
+    });
   </script>
 </body>
 </html>
