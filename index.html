@@ -286,73 +286,25 @@
     .reveal-d2 { transition-delay: .12s; }
 
 
-    /* ── BACK TO TOP ── */
+    /* ── BACK TO TOP (mobile only) ── */
     #back-top {
-      position: fixed; bottom: 32px; right: 32px; z-index: 200;
-      width: 42px; height: 42px;
-      border: 1px solid rgba(34,211,238,.35); border-radius: 50%;
-      background: rgba(7,9,13,.85);
+      display: none;
+      position: fixed; bottom: 28px; right: 24px; z-index: 200;
+      width: 44px; height: 44px;
+      border: 1px solid rgba(34,211,238,.4); border-radius: 50%;
+      background: rgba(7,9,13,.9);
       backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--cyan); cursor: none;
+      align-items: center; justify-content: center;
+      color: var(--cyan);
       opacity: 0; pointer-events: none;
-      transition: opacity .3s, border-color .3s, box-shadow .3s, transform .3s;
-      box-shadow: 0 0 16px rgba(34,211,238,.08);
+      transition: opacity .3s, transform .3s;
+      box-shadow: 0 0 20px rgba(34,211,238,.12);
     }
     #back-top.visible {
       opacity: 1; pointer-events: auto;
     }
-    #back-top:hover {
-      border-color: rgba(34,211,238,.7);
-      box-shadow: 0 0 24px rgba(34,211,238,.2);
-      transform: translateY(-3px);
-    }
-
-    /* ── HAMBURGER ── */
-    #ham-btn {
-      display: none;
-      flex-direction: column; justify-content: center; gap: 5px;
-      width: 36px; height: 36px;
-      background: transparent; border: none; cursor: none;
-      padding: 4px; flex-shrink: 0;
-    }
-    #ham-btn span {
-      display: block; height: 1.5px; border-radius: 2px;
-      background: var(--muted2);
-      transition: transform .3s, opacity .3s, width .3s;
-    }
-    #ham-btn span:nth-child(3) { width: 65%; }
-    #ham-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    #ham-btn.open span:nth-child(2) { opacity: 0; }
-    #ham-btn.open span:nth-child(3) { width: 100%; transform: translateY(-6.5px) rotate(-45deg); }
-
-    /* MOBILE MENU DRAWER */
-    #mobile-menu {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 99;
-      background: rgba(7,9,13,.97);
-      backdrop-filter: blur(20px);
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 40px;
-      opacity: 0; pointer-events: none;
-      transition: opacity .35s ease;
-    }
-    #mobile-menu.open {
-      opacity: 1; pointer-events: auto;
-    }
-    #mobile-menu a {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 8vw, 42px);
-      font-weight: 300; letter-spacing: -.01em;
-      color: var(--muted2);
-      transition: color .2s;
-    }
-    #mobile-menu a:hover { color: var(--cyan); }
-
-    @media (max-width: 900px) {
-      #ham-btn { display: flex; }
+    @media (max-width: 768px) {
+      #back-top { display: flex; }
     }
 
     /* RESPONSIVE */
@@ -383,13 +335,6 @@
     </svg>
   </button>
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu">
-    <a href="#projects" data-i18n="nav_work">Portafolio</a>
-    <a href="#about" data-i18n="nav_about">Acerca</a>
-    <a href="#contact" data-i18n="nav_contact">Contacto</a>
-  </div>
-
   <!-- NAV -->
   <nav id="nav">
     <div class="wrap">
@@ -399,9 +344,6 @@
         <li><a href="#about" data-i18n="nav_about">Acerca</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
       </ul>
-      <button id="ham-btn" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="es">ES</button>
         <div class="lang-divider"></div>
