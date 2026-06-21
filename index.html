@@ -288,23 +288,21 @@
 
     /* ── BACK TO TOP (mobile only) ── */
     #back-top {
-      display: none;
-      position: fixed; bottom: 28px; right: 24px; z-index: 200;
-      width: 44px; height: 44px;
-      border: 1px solid rgba(34,211,238,.4); border-radius: 50%;
-      background: rgba(7,9,13,.9);
-      backdrop-filter: blur(12px);
-      align-items: center; justify-content: center;
-      color: var(--cyan);
+      position: fixed; bottom: 28px; right: 24px; z-index: 9990;
+      width: 48px; height: 48px;
+      border: 1px solid rgba(34,211,238,.5); border-radius: 50%;
+      background: rgba(7,9,13,.95);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); cursor: pointer;
       opacity: 0; pointer-events: none;
-      transition: opacity .3s, transform .3s;
-      box-shadow: 0 0 20px rgba(34,211,238,.12);
+      transition: opacity .4s, box-shadow .3s;
+      box-shadow: 0 0 20px rgba(34,211,238,.15);
     }
     #back-top.visible {
       opacity: 1; pointer-events: auto;
     }
-    @media (max-width: 768px) {
-      #back-top { display: flex; }
+    @media (min-width: 769px) {
+      #back-top { display: none !important; }
     }
 
     /* RESPONSIVE */
