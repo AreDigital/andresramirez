@@ -1590,7 +1590,7 @@ let midiWaitingMeta=null;
 
 async function initMIDI(){
   if(!navigator.requestMIDIAccess){
-    alert('Web MIDI no soportado en este navegador. Usa Chrome.');
+    console.log('Web MIDI no disponible en este navegador — MIDI deshabilitado.');
     return;
   }
   try{
