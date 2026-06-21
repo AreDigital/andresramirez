@@ -1472,18 +1472,16 @@ const BAND_DEFAULTS={
 
 function setBand(id,b){
   const L=getL(id);if(!L)return;
-  if(L.band===b){L.band=null;renderUI();return;}
-  // Guardar amplitud de la banda actual
+  if(L.band===b){L.band=null;renderUI();if(typeof mobRender==='function')mobRender();return;}
   if(L.band){
     if(!L.bandStates) L.bandStates={};
     L.bandStates[L.band]={amp:L.amp};
   }
   L.band=b;
-  // Restaurar amplitud guardada o default
   if(!L.bandStates) L.bandStates={};
   const saved=L.bandStates[b];
   L.amp=saved?saved.amp:(BAND_DEFAULTS[b]||{amp:1}).amp;
-  renderUI();
+  renderUI();if(typeof mobRender==='function')mobRender();
 }
 function toggleTent(id){const L=getL(id);if(L){L.tent=L.tent?0:1;renderUI();}}
 function toggleLayerZoom(id){const L=getL(id);if(L){L.zoom=L.zoom?0:1;renderUI();}}
