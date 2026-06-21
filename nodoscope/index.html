@@ -742,8 +742,8 @@ const COLS=[
   {h:'#ff6b35',r:255,g:107,b:53 },
   {h:'#ffffff',r:255,g:255,b:255},
 ];
-const GEOS=['sphere','cube','torus','wave','dna','diamond','part'];
-const GEO_LABELS=['ESFERA','CUBO','TORO','GRID','HELIX','ROMBO','PART'];
+const GEOS=['sphere','cube','torus','wave','dna','diamond'];
+const GEO_LABELS=['ESFERA','CUBO','TORO','GRID','HELIX','ROMBO'];
 const BANDS=['sub','bass','mid','hi'];
 const BNAMES=['SUB','BAJO','MED','AGU'];
 
@@ -1461,7 +1461,7 @@ function setGeo(id,geo){
     layerAngles[id].x = saved ? saved.angleX : 0;
     layerAngles[id].y = saved ? saved.angleY : 0;
   }
-  buildNodes(L);renderUI();
+  buildNodes(L);renderUI();if(typeof mobRender==='function')mobRender();
 }
 const BAND_DEFAULTS={
   sub:  {amp:1.5},
