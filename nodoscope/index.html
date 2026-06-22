@@ -571,6 +571,7 @@ let analyser=null,dataArray=null,audioCtx=null;
 let sBands={sub:0,bass:0,mid:0,hi:0};
 
 async function startAudio(){
+  if(analyser) return; // ya activo
   try{
     audioCtx=new AudioContext();
     const stream=await navigator.mediaDevices.getUserMedia({audio:true});
@@ -579,17 +580,31 @@ async function startAudio(){
     analyser.fftSize=2048;
     src.connect(analyser);
     dataArray=new Uint8Array(analyser.frequencyBinCount);
-    const btn=document.getElementById('bb-audio-btn');
-    if(btn){btn.textContent='● AUDIO';btn.classList.add('live');}
+    syncAudioBtns('● AUDIO', true);
     document.getElementById('hud-dot').className='live';
     document.getElementById('hud-lbl').textContent='AUDIO ACTIVO';
     buildVU();
   }catch(e){
-    const btn=document.getElementById('bb-audio-btn');
-    if(btn){btn.textContent='✕ ERROR';btn.style.borderColor='var(--s)';btn.style.color='var(--s)';}
+    syncAudioBtns('✕ ERROR', false, true);
     document.getElementById('hud-dot').className='warn';
     document.getElementById('hud-lbl').textContent='ERROR MICRÓFONO';
   }
+}
+
+function syncAudioBtns(text, live, error){
+  ['bb-audio-btn','mob-audio-btn','mob-btn-audio-freq'].forEach(function(id){
+    const b = document.getElementById(id);
+    if(!b) return;
+    b.textContent = text;
+    if(live){ b.classList.add('live'); b.style.borderColor=''; b.style.color=''; }
+    if(error){ b.style.borderColor='var(--s)'; b.style.color='var(--s)'; }
+  });
+  // también los botones de frecuencia en capas del desktop (tienen id dinámico)
+  document.querySelectorAll('[id^="btn-audio-freq-"]').forEach(function(b){
+    b.textContent = text;
+    if(live){ b.classList.add('live'); b.style.borderColor=''; b.style.color=''; }
+    if(error){ b.style.borderColor='var(--s)'; b.style.color='var(--s)'; }
+  });
 }
 
 function readAudio(){
@@ -1258,6 +1273,7 @@ function renderUI(){
           <span>FRECUENCIA</span>
           <div style="display:flex;gap:3px">
             <button class="bb-tog ${L.bpmSync?'on':''}" style="font-size:7px;padding:2px 6px;${L.bpmSync?'border-color:'+col+';color:'+col:''}" onclick="event.stopPropagation();const L=getL(${L.id});L.bpmSync=!L.bpmSync;renderUI()">BPM SYNC</button>
+            <button class="bb-tog" id="btn-audio-freq-${L.id}" style="font-size:7px;padding:2px 6px;border-color:rgba(0,255,224,0.4);color:rgba(0,255,224,0.7)" onclick="startAudio()">AUDIO</button>
             <button class="lrst" onclick="event.stopPropagation();const L=getL(${L.id});L.band=null;L.amp=1;if(L.bandStates)L.bandStates={};saveGeoState(L);renderUI()">↺</button>
           </div>
         </div>
@@ -1944,6 +1960,7 @@ function mobRender(){
       <div class="lsec" style="display:flex;justify-content:space-between;align-items:center">
         <span>FRECUENCIA</span>
         <div style="display:flex;gap:3px">
+          <button class="bb-tog" id="mob-btn-audio-freq" style="font-size:7px;padding:2px 6px;border-color:rgba(0,255,224,0.4);color:rgba(0,255,224,0.7)" onclick="startAudio()">AUDIO</button>
           <button class="bb-tog ${L.bpmSync?'on':''}" style="font-size:7px;padding:2px 6px;${L.bpmSync?'border-color:'+col+';color:'+col:''}"
             onclick="const L=getL(${id});L.bpmSync=!L.bpmSync;mobRender()">BPM SYNC</button>
           <button class="lrst" onclick="const L=getL(${id});L.band=null;L.amp=1;saveGeoState(L);mobRender()">↺</button>
