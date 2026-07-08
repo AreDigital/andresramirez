@@ -52,7 +52,7 @@
     .section-label{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2);margin-bottom:48px;display:flex;align-items:center;gap:16px}
     .section-label::after{content:'';width:36px;height:1px;background:var(--border)}
 
-    .profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+    .profiles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
     .profile-card{background:var(--surface);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .25s}
     .profile-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s;z-index:1}
     .profile-card:hover{background:var(--surface2)}
