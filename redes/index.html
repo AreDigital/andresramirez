@@ -69,10 +69,13 @@
     .profile-link:hover{opacity:1;gap:10px}
 
     .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:60px}
+    .cta-buttons>a{flex:1 1 220px;max-width:260px;justify-content:center}
     .nav-back{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid var(--border);border-radius:3px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--muted2);background:transparent;transition:border-color .2s,color .2s}
     .nav-back:hover{color:var(--text);border-color:var(--muted)}
     .btn-behance{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid rgba(34,211,238,.3);border-radius:3px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--cyan);background:var(--cyan-dim);transition:background .25s,border-color .25s}
     .btn-behance:hover{background:rgba(34,211,238,.14);border-color:rgba(34,211,238,.6)}
+    .btn-contact{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid var(--cyan);border-radius:3px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:.05em;color:#07090d;background:var(--cyan);transition:background .25s,box-shadow .25s}
+    .btn-contact:hover{background:#5ee5f5;box-shadow:0 0 22px rgba(34,211,238,.35)}
 
     footer{border-top:1px solid var(--border);padding:26px 0;margin-top:80px}
     footer .wrap{display:flex;justify-content:space-between;align-items:center}
@@ -84,7 +87,7 @@
 
     @media(max-width:900px){.nav-links{display:none};.profiles-grid{grid-template-columns:1fr}}
     @media(max-width:768px){.wrap{padding:0 24px}}
-    @media(max-width:640px){.cta-buttons{flex-direction:column}.nav-back,.btn-behance{width:100%;justify-content:center}}
+    @media(max-width:640px){.cta-buttons{flex-direction:column}.cta-buttons>a{flex:0 0 auto;max-width:none;width:100%;justify-content:center}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
@@ -183,6 +186,12 @@
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
+        <a href="https://wa.link/tgapij" target="_blank" rel="noopener" class="btn-contact">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 14l1.5-3.5A6 6 0 1 1 6.5 13L2 14Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="btn_contact">Contacto</span>
+        </a>
       </div>
     </div>
   </section>
@@ -208,7 +217,7 @@
         p01_sub: 'DJ · Productor Audiovisual',
         p02_sub: 'Token de Oro Digital Descentralizado',
         p03_sub: 'Entrenador Personal',
-        btn_back: 'Volver al portafolio', btn_behance: 'Ver portafolio en Behance',
+        btn_back: 'Volver al portafolio', btn_behance: 'Ver portafolio en Behance', btn_contact: 'Contacto',
       },
       en: {
         nav_work: 'Portfolio', nav_about: 'About', nav_contact: 'Contact',
@@ -220,7 +229,7 @@
         p01_sub: 'DJ · Audiovisual Producer',
         p02_sub: 'Decentralized Digital Gold Token',
         p03_sub: 'Personal Trainer',
-        btn_back: 'Back to portfolio', btn_behance: 'View portfolio on Behance',
+        btn_back: 'Back to portfolio', btn_behance: 'View portfolio on Behance', btn_contact: 'Contact',
       },
       fr: {
         nav_work: 'Portfolio', nav_about: 'À propos', nav_contact: 'Contact',
@@ -232,7 +241,7 @@
         p01_sub: 'DJ · Producteur Audiovisuel',
         p02_sub: 'Jeton d\'Or Numérique Décentralisé',
         p03_sub: 'Entraîneur Personnel',
-        btn_back: 'Retour au portfolio', btn_behance: 'Voir le portfolio sur Behance',
+        btn_back: 'Retour au portfolio', btn_behance: 'Voir le portfolio sur Behance', btn_contact: 'Contact',
       }
     };
 

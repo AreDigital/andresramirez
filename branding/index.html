@@ -115,6 +115,17 @@
       background: rgba(34,211,238,.14); border-color: rgba(34,211,238,.6);
     }
     .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 60px; }
+    .cta-buttons > a { flex: 1 1 220px; max-width: 260px; justify-content: center; }
+    .btn-contact {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--cyan); border-radius: 3px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 500; letter-spacing: .05em;
+      color: #07090d; background: var(--cyan);
+      transition: background .25s, box-shadow .25s;
+    }
+    .btn-contact:hover { background: #5ee5f5; box-shadow: 0 0 22px rgba(34,211,238,.35); }
 
     /* HERO */
     #hero {
@@ -257,7 +268,7 @@
     }
     @media (max-width: 640px) {
       .cta-buttons { flex-direction: column; }
-      .nav-back, .btn-behance { width: 100%; justify-content: center; }
+      .cta-buttons > a { flex: 0 0 auto; max-width: none; width: 100%; justify-content: center; }
     }
     @media (max-width: 768px) {
       .wrap { padding: 0 24px; }
@@ -407,6 +418,12 @@
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
+        <a href="https://wa.link/tgapij" target="_blank" rel="noopener" class="btn-contact">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 14l1.5-3.5A6 6 0 1 1 6.5 13L2 14Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="btn_contact">Contacto</span>
+        </a>
       </div>
     </div>
   </section>
@@ -436,7 +453,7 @@
         s04_name: 'ADN de Marca', s04_desc: 'Un estudio profundo sobre la identidad de tu marca: valores, misión, visión, propósito, competencia, buyer persona y estrategia para conectar con tu público objetivo.',
         s05_name: 'Presskit Digital', s05_desc: 'Una presentación profesional con biografía, fotos, logotipo y enlaces clave. Ideal para marcas, artistas y creadores que buscan mostrar su información de forma elegante.',
         s06_name: 'Brochure', s06_desc: 'Un recurso esencial para comunicar tu marca con claridad. Incluye presentaciones, menús, carta de precios o datos clave en un diseño profesional, digital o impreso.',
-        btn_back: 'Volver al portafolio', btn_behance: 'Ver portafolio en Behance',
+        btn_back: 'Volver al portafolio', btn_behance: 'Ver portafolio en Behance', btn_contact: 'Contacto',
       },
       en: {
         nav_work: 'Portfolio', nav_about: 'About', nav_contact: 'Contact',
@@ -451,7 +468,7 @@
         s04_name: 'Brand DNA', s04_desc: 'An in-depth study of your brand\'s identity: values, mission, vision, purpose, competition, buyer persona and strategy to connect with your target audience.',
         s05_name: 'Digital Presskit', s05_desc: 'A professional presentation with bio, photos, logo and key links. Ideal for brands, artists and creators looking to showcase their information elegantly.',
         s06_name: 'Brochure', s06_desc: 'An essential resource to communicate your brand clearly. Includes presentations, menus, price lists or key data in a professional, digital or printed design.',
-        btn_back: 'Back to portfolio', btn_behance: 'View portfolio on Behance',
+        btn_back: 'Back to portfolio', btn_behance: 'View portfolio on Behance', btn_contact: 'Contact',
       },
       fr: {
         nav_work: 'Portfolio', nav_about: 'À propos', nav_contact: 'Contact',
@@ -466,7 +483,7 @@
         s04_name: 'ADN de Marque', s04_desc: 'Une étude approfondie de l\'identité de votre marque : valeurs, mission, vision, objectif, concurrence, buyer persona et stratégie pour connecter avec votre public cible.',
         s05_name: 'Presskit Digital', s05_desc: 'Une présentation professionnelle avec biographie, photos, logo et liens clés. Idéal pour les marques, artistes et créateurs souhaitant présenter leurs informations avec élégance.',
         s06_name: 'Brochure', s06_desc: 'Une ressource essentielle pour communiquer votre marque clairement. Comprend présentations, menus, liste de prix ou données clés dans un design professionnel, numérique ou imprimé.',
-        btn_back: 'Retour au portfolio', btn_behance: 'Voir le portfolio sur Behance',
+        btn_back: 'Retour au portfolio', btn_behance: 'Voir le portfolio sur Behance', btn_contact: 'Contact',
       }
     };
 
